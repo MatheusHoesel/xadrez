@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using System.Text;
 
-namespace xadrez_console.Tabuleiro
+namespace xadrez_console.tabuleiro
 {
     class Posicao
     {
         public int Linha { get; set; }
         public int Coluna { get; set; }
-
-        public Posicao()
-        {
-        }
 
         public Posicao(int linha, int coluna)
         {
