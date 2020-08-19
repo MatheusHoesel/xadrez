@@ -18,9 +18,13 @@ namespace xadrez_console.tabuleiro
             Tabuleiro = tabuleiro;
             QteMovimentos = 0;
         }
-        public int IncrementarQtdMovimentos()
+        public void IncrementarQtdMovimentos()
         {
-            return QteMovimentos++;
+            QteMovimentos++;
+        }
+        public void DecrementarQtdMovimentos()
+        {
+             QteMovimentos--;
         }
         public bool ExisteMovimentosPossiveis()
         {
