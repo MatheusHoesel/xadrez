@@ -15,23 +15,35 @@ namespace xadrez_console
                 
                 while (!Partida.Terminada)
                 {
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(Partida.Tab);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(Partida.Tab);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno" + Partida.Turno);
+                        Console.WriteLine("Aguardando Jogada: " + Partida.JogadorAtual);
 
-                    Console.WriteLine();
-                    Console.Write("Origem: ");
-                    Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                        Console.WriteLine();
+                        Console.Write("Origem: ");
+                        Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                        Partida.ValidarPosicaoDeOrigem(origem);
 
-                    bool[,] posicoesPossiveis = Partida.Tab.peca(origem).MovimentosPossiveis();
+                        bool[,] posicoesPossiveis = Partida.Tab.peca(origem).MovimentosPossiveis();
 
-                    Console.Clear();
-                    Tela.ImprimirTabuleiro(Partida.Tab, posicoesPossiveis);
+                        Console.Clear();
+                        Tela.ImprimirTabuleiro(Partida.Tab, posicoesPossiveis);
 
-                    Console.WriteLine();
-                    Console.Write("Destino: ");
-                    Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
-                    Partida.ExecutarMovimento(origem, destino);
-
+                        Console.WriteLine();
+                        Console.Write("Destino: ");
+                        Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                        Partida.ValidarPosicaoDeDestino(origem, destino);
+                        Partida.RealizaJodada(origem, destino);
+                    }
+                    catch(TabuleiroException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
                 }
                 
             }
