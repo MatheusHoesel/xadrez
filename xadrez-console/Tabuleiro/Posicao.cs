@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Principal;
-using System.Text;
+﻿namespace tabuleiro {
+    class Posicao {
 
-namespace xadrez_console.tabuleiro
-{
-    class Posicao
-    {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
+        public int linha { get; set; }
+        public int coluna { get; set; }
 
-        public Posicao(int linha, int coluna)
-        {
-            Linha = linha;
-            Coluna = coluna;
-        }
-        public void DefinirValores(int linha, int coluna)
-        {
-            Linha = linha;
-            Coluna = coluna;
+        public Posicao(int linha, int coluna) {
+            this.linha = linha;
+            this.coluna = coluna;
         }
 
-        public override string ToString()
-        {
-            return "Linha: " + Linha
-                + ", Coluna: " + Coluna;
+        public void definirValores(int linha, int coluna) {
+            this.linha = linha;
+            this.coluna = coluna;
+        }
+
+        public override string ToString() {
+            return linha
+                + ", "
+                + coluna;
         }
     }
 }
